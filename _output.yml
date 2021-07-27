@@ -1,0 +1,4 @@
+bookdown::bs4_book:
+  theme:
+    primary: "#C33C54"
+  repo: https://github.com/GSS-Cogs/linked-data-book
