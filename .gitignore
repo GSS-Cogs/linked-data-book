@@ -16,3 +16,4 @@ _main.*
 bookdown*
 tmp-pdfcrop-*
 figures
+**/.DS_Store

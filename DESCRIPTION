@@ -1,0 +1,32 @@
+Package: linked-data-book
+Title: Creating Linked Open Statistical Data.
+Version: 0.1
+Authors@R:
+    c(person(given = "Ross",
+             family = "Bowen",
+             role = c("aut", "cre"))
+URL: https://github.com/GSS-Cogs/linked-data-book
+Depends:
+    R (>= 3.1.0)
+Imports:
+    bookdown,
+    bslib,
+    desc,
+    DiagrammeR,
+    downlit,
+    dplyr,
+    httr,
+    janitor,
+    jsonlite,
+    knitr,
+    rmarkdown,
+    sessioninfo,
+    tidyr,
+    xml2
+Suggests:
+    servr
+Remotes:
+    rstudio/bookdown,
+    rstudio/bslib,
+    r-lib/downlit
+Encoding: UTF-8
