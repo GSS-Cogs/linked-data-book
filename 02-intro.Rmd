@@ -1,7 +1,0 @@
-# Introduction
-
-> TODO: Why data in spreadsheets isn't enough.
-
-## What is linked data?
-
-> TODO: Linked data, https://www.w3.org/DesignIssues/LinkedData.html
