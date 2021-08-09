@@ -1,4 +1,4 @@
-# Creating Linked Data
+# Creating linked data
 
 ## Tidy(ish) data {#tidy-data}
 
@@ -8,13 +8,89 @@
 >
 > Some sort of `unpivotr` example going from a spreadsheet to tidy data.
 
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(tidyr)
+
+set.seed(1) # Used to control randomness in the examples
+
+df <- tibble(
+        geography = c("W92000001", "E92000001"),
+        `2015` = rnorm(2),
+        `2016` = rnorm(2),
+        `2017` = rnorm(2),
+        `2018` = rnorm(2),
+        `2019` = rnorm(2),
+        `2020` = rnorm(2),
+        `2021` = rnorm(2)
+    )
+
+df
+```
+
+```{r}
+df %>% pivot_longer(
+    cols = !geography,
+    names_to = "year",
+    names_transform = list(year = as.numeric)
+)
+```
 ### Dates and times
 
 > TODO:
 >
-> Explain [reference.data.gov.uk](https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md)] in a friendly way.
+> Explain [reference.data.gov.uk](https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md) in a friendly way.
 >
 > Do we separate out months vs. years vs. quarters?
+
+```ttl
+<http://reference.data.gov.uk/id/year/2021>
+    a                               interval:Year , interval:CalendarYear , scv:Dimension ;
+    rdfs:comment                    "The British calendar year of 2021"@en ;
+    rdfs:label                      "British Year:2021"@en ;
+    scv:max                         "2021-12-31"^^xsd:date ;
+    scv:min                         "2021-01-01"^^xsd:date ;
+    time:intervalContains           <http://reference.data.gov.uk/id/month/2021-01>, 
+        <http://reference.data.gov.uk/id/month/2021-02>,
+        <http://reference.data.gov.uk/id/month/2021-03,
+        # ...
+    .
+```
+
+```ttl
+<http://reference.data.gov.uk/id/government-year/2021-2022>
+    a                               interval:Year , scv:Dimension , interval:BusinessYear ;
+    rdfs:comment                    "The Modern HMG calendar year of 2021-2022"@en ;
+    rdfs:label                      "Modern HMG Year:2021-2022"@en ;
+    scv:max                         "2022-03-31"^^xsd:date ;
+    scv:min                         "2021-04-01"^^xsd:date ;
+    time:intervalContains           <http://reference.data.gov.uk/id/month/2021-04>, 
+        <http://reference.data.gov.uk/id/month/2021-05>,
+        <http://reference.data.gov.uk/id/month/2021-06>,
+        # ...
+    .
+```
+
+The service offers two main sets of calendars:
+
+- [Calendar](https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md#british-calendar-intervals) intervals, aligning to the 1st January. 
+- ["Government" calendar](https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md#modern-government-business-intervals) intervals, aligning to the 1st April.
+
+Name               | Pattern        | Example
+------------------ | -------------- | -------
+Calendar year      | `YYYY`         | `2021`
+Calendar half      | `YYYY-Hk`      | `2021-Q1`
+Calendar quarter   | `YYYY-Qk`      | `2021-Q1`
+Calendar week      | `YYYY-Wk`      | `2021-W1`
+Calendar day       | `YYYY-MM-DD`   | `2021-01-01`
+Government year    | `YYYY-ZZZZ`    | `2021-2022`
+Government half    | `YYYY-ZZZZ/Hk` | `2021-2022/H1`
+Government quarter | `YYYY-ZZZZ/Qk` | `2021-2022/Q1`
+Government week    | `YYYY-ZZZZ/Wk` | `2021-2022/W1`
+
+Calendar weeks and government weeks begin on a Monday, with the first week containing the 4th of January or 4th of April respectively.
+
+> TODO: Other types of year e.g. academic years.
 
 ### UK geographies
 
@@ -24,15 +100,130 @@
 
 > TODO: Explain how to pivot a wide, multiple measure dataframe into a long, measure-dimension dataframe.
 
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(tidyr)
+
+set.seed(1) # Used to control randomness in the examples
+
+df <- expand_grid(
+        year = 2020:2021,
+        geography = c("W92000001", "E92000001")) %>%
+    mutate(
+        population = round(1000000 + rnorm(2 * 2) * 10000),
+        gdp = round(1000000 + rnorm(2 * 2) * 10000))
+
+df
+```
+
+
+```{r}
+df %>% pivot_longer(
+    cols = c("population", "gdp"),
+    names_to = "measure_type"
+)
+```
+
 ### Hierarchies
 
 > TODO: What do you do when you have a parent -> child relationship in the dataset. We need to make explicit that columns should be orthogonal from one another.
 
-### Statistical Markers
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(tidyr)
+library(stringr)
+
+set.seed(1) # Used to control randomness in the examples
+
+df1 <- expand_grid(
+        year = 2020:2021,
+        local_authority = c(
+            "W06000015", # Cardiff
+            "W06000011"  # Swansea
+    )) %>%
+    mutate(country = "W92000001", .before = local_authority) %>%
+    mutate(value = rnorm(2 * 2))
+
+df2 <- expand_grid(
+        year = 2020:2021,
+        country = "W92000001",
+        local_authority = NA
+    ) %>%
+    mutate(value = rnorm(2 * 1))
+
+df <- bind_rows(df1, df2)
+
+df
+```
+
+```{r}
+df %>%
+    mutate(
+        geography = coalesce(local_authority, country), 
+        .after = local_authority
+    ) %>%
+    select(-local_authority, -country)
+```
+
+```{r}
+# TODO: Turn this into a proper function.
+hierarchy <- df %>%
+    select(parent_notation = country, notation = local_authority)
+
+notations <- unique(c(hierarchy$notation, hierarchy$parent_notation))
+notations <- notations[!is.na(notations)]
+
+codelist <- tibble(notation = notations) %>%
+    left_join(hierarchy, by = "notation")
+
+codelist
+```
+
+### Statistical markers
 
 > TODO: How to deal with missing values, or marks which indicate non-disclosure etc.
 
-### Cubes
+The UK Government Statistical Service provides advice on [using symbols and shorthand in statistical tables](https://gss.civilservice.gov.uk/policy-store/symbols-in-tables-definitions-and-help/). Previously, this involved using symbols such as `:`, `*` or `†` to describe things like an observation being suppressed due to non disclosure or statistical significance. New [draft guidance](https://github.com/best-practice-and-impact/using-symbols-in-tables-draft-update/blob/main/draft-one.md) no longer recommends the use of these specific symbols, but instead recommends using letters such a `[c]` or `[x]`. We refer to these as **markers**.
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(tidyr)
+
+set.seed(1) # Used to control randomness in the examples
+
+df <- expand_grid(year = 2020:2021,
+                  geography = c("W92000001", "E92000001")) %>%
+    mutate(value = rnorm(2 * 2)) %>%
+    rowwise() %>%
+    mutate(value = sample(c(value, "[c]"), size = 1)) %>%
+    ungroup()
+
+df
+```
+
+We notice R has interpreted the `value` column as containing characters rather than numbers due to the introduction of the `[c]` symbol. This causes some unideal behaviour when trying to use the data to compute further statistics.
+
+```{r}
+mean(df$value)
+```
+
+We require that the data be separated into a `value` column and a `marker` column, with the `marker` column including these sorts of symbols. We also require that the `marker` column be limited to containing _one_ marker only. If there is a need to mark observations with multiple markers, we advice creating multiple columns, one for each marker.
+
+```{r}
+# TODO: Turn this into a proper function.
+extract_markers <- function(x) {
+  x[!suppressWarnings(is.na(as.numeric(x)))] <- NA
+  return(x)
+}
+
+df %>%
+    mutate(
+        marker = extract_markers(value),
+        value = suppressWarnings(as.numeric(value))
+    )
+```
+
+## Representing as linked data
 
 > TODO: Explain how to create a cube from a dataframe.
 >
@@ -52,6 +243,63 @@ ld_dataset(df,
 )
 ```
 
-## CSV on the Web (CSVW)
+### CSV on the Web (CSVW)
 
 > TODO: Explain the CSV on the Web (CSVW) format.
+
+## Examples
+
+### Quarterly Stamp Duty Land Tax (SDLT) statistics
+
+We take an extract of `Table_2a` of [Quarterly Stamp Duty Land Tax (SDLT) statistics](https://www.gov.uk/government/statistics/quarterly-stamp-duty-land-tax-sdlt-statistics).
+
+```{r}
+# https://www.gov.uk/government/statistics/quarterly-stamp-duty-land-tax-sdlt-statistics
+
+df <- tibble::tibble(
+  `Financial Year`                                  = c("2019-20", "2020-21"),
+  `All liable transactions under £250K`             = c(290200,    157100),
+  `HRAD transactions under £250K`                   = c(135400,    117600),
+  `All liable transactions between £250K and £500K` = c(279600,    98500),
+  `HRAD transactions between £250K and £500K`       = c(56100,     52800)
+)
+
+knitr::kable(df)
+```
+
+
+We can see this looks like a cross tabulation of year and transaction details. To make it tidy, the transaction details belong in their own column.
+
+This example is interesting because under closer inspection we can see the transaction details contain two pieces of information, the type of transaction (e.g. `All liable transactions` and `HRAD transactions`), and the price band of those transactions (`under £250k`, `between £250k and £500k`).
+
+Additionally, the sources' footnotes mention data from 2020-21 are provisional.
+
+Our approach is:
+
+- Pivot the dataframe into a longer format.
+- Split out the column headers into two pieces of information, the transaction type and the transaction price band.
+- Explicitly mark provisional data in the data.
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(tidyr)
+library(stringr)
+
+tidy_df <- df %>%
+  pivot_longer(cols = !`Financial Year`,
+               values_to = "transactions") %>%
+  # https://www.statworx.com/de/blog/strsplit-but-keeping-the-delimiter/
+  separate(
+    name,
+    into = c("transaction_type", "transaction_price_band"),
+    sep = "(?=under |between )"
+  ) %>%
+  rename(financial_year = `Financial Year`) %>%
+  mutate(
+    transaction_type = str_trim(transaction_type),
+    transaction_price_band = str_to_sentence(transaction_price_band)
+  ) %>%
+  mutate(marker = case_when(financial_year == "2020-21" ~ "[p]"))
+
+tidy_df
+```

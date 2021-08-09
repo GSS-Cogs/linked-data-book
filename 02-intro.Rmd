@@ -66,7 +66,7 @@ We can describe these principles in more detail:
 
 4. Using RDF we can define relationships between URIs, so that we can discover more information about the thing described by that URI. For example, we might link a book's URI to the URI for the book's author, or to the URI for the book's publisher.
 
-### Linked _Open_ Data
+### Linked _open_ data
 
 > TODO: Explain the stars.
 
@@ -77,6 +77,8 @@ We can describe these principles in more detail:
 > - ⭐⭐⭐⭐⭐ All the above, plus: Link your data to other people's data to provide context
 
 Data can be linked, but to get a star, the data needs an open licence.
+
+> https://w3c.github.io/dwbp/bp.html
 
 ### About RDF
 
