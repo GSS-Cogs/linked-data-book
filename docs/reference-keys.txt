@@ -11,8 +11,10 @@ uk-geographies
 multiple-measures
 hierarchies
 statistical-markers
-cubes
+representing-as-linked-data
 csv-on-the-web-csvw
+examples
+quarterly-stamp-duty-land-tax-sdlt-statistics
 reference-data
 harmonisation
 architecture

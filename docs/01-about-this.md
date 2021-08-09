@@ -12,15 +12,14 @@ Later chapters explain our data architecture, use of open standards, and the iss
 
 ## Colophon {.unnumbered}
 
-This book was written in [RStudio](http://www.rstudio.com/ide/) using [bookdown](http://bookdown.org/).
-The complete source is available from [GitHub](https://github.com/GSS-Cogs/linked-data-book).
+This book was written using [bookdown](http://bookdown.org/). The complete source is available from [GitHub](https://github.com/GSS-Cogs/linked-data-book).
 
 This version of the book was built with R version 4.1.0 (2021-05-18) and the following packages:
 
 
 |package     |version    |source                             |
 |:-----------|:----------|:----------------------------------|
-|bookdown    |0.22.17    |Github (rstudio/bookdown\@7be12f2) |
+|bookdown    |0.22.17    |Github (rstudio/bookdown\@9615b14) |
 |bslib       |0.2.5.9002 |Github (rstudio/bslib\@78960cb)    |
 |desc        |1.3.0      |standard (\@1.3.0)                 |
 |DiagrammeR  |1.0.6.1    |standard (\@1.0.6.1)               |

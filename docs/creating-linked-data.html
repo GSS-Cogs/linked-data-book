@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>2 Creating Linked Data | Creating Linked Open Statistical Data</title>
+<title>2 Creating linked data | Creating Linked Open Statistical Data</title>
 <meta name="author" content="Ross Bowen">
-<meta name="description" content="2.1 Tidy(ish) data  TODO: https://r4ds.had.co.nz/tidy-data.html Some sort of unpivotr example going from a spreadsheet to tidy data.  2.1.1 Dates and times  TODO: Explain reference.data.gov.uk] in...">
+<meta name="description" content="2.1 Tidy(ish) data  TODO: https://r4ds.had.co.nz/tidy-data.html Some sort of unpivotr example going from a spreadsheet to tidy data. library(dplyr, warn.conflicts = FALSE) library(tidyr)...">
 <meta name="generator" content="bookdown 0.22.17 with bs4_book()">
-<meta property="og:title" content="2 Creating Linked Data | Creating Linked Open Statistical Data">
+<meta property="og:title" content="2 Creating linked data | Creating Linked Open Statistical Data">
 <meta property="og:type" content="book">
-<meta property="og:description" content="2.1 Tidy(ish) data  TODO: https://r4ds.had.co.nz/tidy-data.html Some sort of unpivotr example going from a spreadsheet to tidy data.  2.1.1 Dates and times  TODO: Explain reference.data.gov.uk] in...">
+<meta property="og:description" content="2.1 Tidy(ish) data  TODO: https://r4ds.had.co.nz/tidy-data.html Some sort of unpivotr example going from a spreadsheet to tidy data. library(dplyr, warn.conflicts = FALSE) library(tidyr)...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2 Creating Linked Data | Creating Linked Open Statistical Data">
-<meta name="twitter:description" content="2.1 Tidy(ish) data  TODO: https://r4ds.had.co.nz/tidy-data.html Some sort of unpivotr example going from a spreadsheet to tidy data.  2.1.1 Dates and times  TODO: Explain reference.data.gov.uk] in...">
+<meta name="twitter:title" content="2 Creating linked data | Creating Linked Open Statistical Data">
+<meta name="twitter:description" content="2.1 Tidy(ish) data  TODO: https://r4ds.had.co.nz/tidy-data.html Some sort of unpivotr example going from a spreadsheet to tidy data. library(dplyr, warn.conflicts = FALSE) library(tidyr)...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.9002/transition.js"></script><script src="libs/bs3compat-0.2.5.9002/tabs.js"></script><script src="libs/bs3compat-0.2.5.9002/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 <li><a class="" href="index.html">Welcome</a></li>
 <li><a class="" href="about-this-book.html">About this book</a></li>
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
-<li><a class="active" href="creating-linked-data.html"><span class="header-section-number">2</span> Creating Linked Data</a></li>
+<li><a class="active" href="creating-linked-data.html"><span class="header-section-number">2</span> Creating linked data</a></li>
 <li><a class="" href="reference-data.html"><span class="header-section-number">3</span> Reference data</a></li>
 <li><a class="" href="harmonisation.html"><span class="header-section-number">4</span> Harmonisation</a></li>
 <li><a class="" href="architecture.html"><span class="header-section-number">5</span> Architecture</a></li>
@@ -57,7 +57,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="creating-linked-data" class="section level1">
 <h1>
-<span class="header-section-number">2</span> Creating Linked Data<a class="anchor" aria-label="anchor" href="#creating-linked-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2</span> Creating linked data<a class="anchor" aria-label="anchor" href="#creating-linked-data"><i class="fas fa-link"></i></a>
 </h1>
 <div id="tidy-data" class="section level2">
 <h2>
@@ -68,14 +68,140 @@
 <p><a href="https://r4ds.had.co.nz/tidy-data.html" class="uri">https://r4ds.had.co.nz/tidy-data.html</a></p>
 <p>Some sort of <code>unpivotr</code> example going from a spreadsheet to tidy data.</p>
 </blockquote>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># Used to control randomness in the examples</span>
+
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
+        geography <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"W92000001"</span>, <span class="st">"E92000001"</span><span class="op">)</span>,
+        `2015` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
+        `2016` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
+        `2017` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
+        `2018` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
+        `2019` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
+        `2020` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
+        `2021` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+    <span class="op">)</span>
+
+<span class="va">df</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 2 × 8</span></span>
+<span class="co">#&gt;   <span style="font-weight: bold;">geography</span> <span style="font-weight: bold;">`2015`</span> <span style="font-weight: bold;">`2016`</span> <span style="font-weight: bold;">`2017`</span> <span style="font-weight: bold;">`2018`</span> <span style="font-weight: bold;">`2019`</span> <span style="font-weight: bold;">`2020`</span> <span style="font-weight: bold;">`2021`</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #555555;">1</span> W92000001 -<span style="color: #BB0000;">0.626</span> -<span style="color: #BB0000;">0.836</span>  0.330  0.487  0.576  1.51  -<span style="color: #BB0000;">0.621</span></span>
+<span class="co">#&gt; <span style="color: #555555;">2</span> E92000001  0.184  1.60  -<span style="color: #BB0000;">0.820</span>  0.738 -<span style="color: #BB0000;">0.305</span>  0.390 -<span style="color: #BB0000;">2.21</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
+    cols <span class="op">=</span> <span class="op">!</span><span class="va">geography</span>,
+    names_to <span class="op">=</span> <span class="st">"year"</span>,
+    names_transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">as.numeric</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 14 × 3</span></span>
+<span class="co">#&gt;   <span style="font-weight: bold;">geography</span>  <span style="font-weight: bold;">year</span>  <span style="font-weight: bold;">value</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #555555;">1</span> W92000001  <span style="text-decoration: underline;">2</span>015 -<span style="color: #BB0000;">0.626</span></span>
+<span class="co">#&gt; <span style="color: #555555;">2</span> W92000001  <span style="text-decoration: underline;">2</span>016 -<span style="color: #BB0000;">0.836</span></span>
+<span class="co">#&gt; <span style="color: #555555;">3</span> W92000001  <span style="text-decoration: underline;">2</span>017  0.330</span>
+<span class="co">#&gt; <span style="color: #555555;">4</span> W92000001  <span style="text-decoration: underline;">2</span>018  0.487</span>
+<span class="co">#&gt; <span style="color: #555555;">5</span> W92000001  <span style="text-decoration: underline;">2</span>019  0.576</span>
+<span class="co">#&gt; <span style="color: #555555;">6</span> W92000001  <span style="text-decoration: underline;">2</span>020  1.51 </span>
+<span class="co">#&gt; <span style="color: #555555;"># … with 8 more rows</span></span></code></pre></div>
 <div id="dates-and-times" class="section level3">
 <h3>
 <span class="header-section-number">2.1.1</span> Dates and times<a class="anchor" aria-label="anchor" href="#dates-and-times"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>TODO:</p>
-<p>Explain <a href="https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md">reference.data.gov.uk</a>] in a friendly way.</p>
+<p>Explain <a href="https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md">reference.data.gov.uk</a> in a friendly way.</p>
 <p>Do we separate out months vs. years vs. quarters?</p>
+</blockquote>
+<pre class="ttl"><code>&lt;http://reference.data.gov.uk/id/year/2021&gt;
+    a                               interval:Year , interval:CalendarYear , scv:Dimension ;
+    rdfs:comment                    "The British calendar year of 2021"@en ;
+    rdfs:label                      "British Year:2021"@en ;
+    scv:max                         "2021-12-31"^^xsd:date ;
+    scv:min                         "2021-01-01"^^xsd:date ;
+    time:intervalContains           &lt;http://reference.data.gov.uk/id/month/2021-01&gt;, 
+        &lt;http://reference.data.gov.uk/id/month/2021-02&gt;,
+        &lt;http://reference.data.gov.uk/id/month/2021-03,
+        # ...
+    .</code></pre>
+<pre class="ttl"><code>&lt;http://reference.data.gov.uk/id/government-year/2021-2022&gt;
+    a                               interval:Year , scv:Dimension , interval:BusinessYear ;
+    rdfs:comment                    "The Modern HMG calendar year of 2021-2022"@en ;
+    rdfs:label                      "Modern HMG Year:2021-2022"@en ;
+    scv:max                         "2022-03-31"^^xsd:date ;
+    scv:min                         "2021-04-01"^^xsd:date ;
+    time:intervalContains           &lt;http://reference.data.gov.uk/id/month/2021-04&gt;, 
+        &lt;http://reference.data.gov.uk/id/month/2021-05&gt;,
+        &lt;http://reference.data.gov.uk/id/month/2021-06&gt;,
+        # ...
+    .</code></pre>
+<p>The service offers two main sets of calendars:</p>
+<ul>
+<li>
+<a href="https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md#british-calendar-intervals">Calendar</a> intervals, aligning to the 1st January.</li>
+<li>
+<a href="https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md#modern-government-business-intervals">“Government” calendar</a> intervals, aligning to the 1st April.</li>
+</ul>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Name</th>
+<th>Pattern</th>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Calendar year</td>
+<td><code>YYYY</code></td>
+<td><code>2021</code></td>
+</tr>
+<tr class="even">
+<td>Calendar half</td>
+<td><code>YYYY-Hk</code></td>
+<td><code>2021-Q1</code></td>
+</tr>
+<tr class="odd">
+<td>Calendar quarter</td>
+<td><code>YYYY-Qk</code></td>
+<td><code>2021-Q1</code></td>
+</tr>
+<tr class="even">
+<td>Calendar week</td>
+<td><code>YYYY-Wk</code></td>
+<td><code>2021-W1</code></td>
+</tr>
+<tr class="odd">
+<td>Calendar day</td>
+<td><code>YYYY-MM-DD</code></td>
+<td><code>2021-01-01</code></td>
+</tr>
+<tr class="even">
+<td>Government year</td>
+<td><code>YYYY-ZZZZ</code></td>
+<td><code>2021-2022</code></td>
+</tr>
+<tr class="odd">
+<td>Government half</td>
+<td><code>YYYY-ZZZZ/Hk</code></td>
+<td><code>2021-2022/H1</code></td>
+</tr>
+<tr class="even">
+<td>Government quarter</td>
+<td><code>YYYY-ZZZZ/Qk</code></td>
+<td><code>2021-2022/Q1</code></td>
+</tr>
+<tr class="odd">
+<td>Government week</td>
+<td><code>YYYY-ZZZZ/Wk</code></td>
+<td><code>2021-2022/W1</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Calendar weeks and government weeks begin on a Monday, with the first week containing the 4th of January or 4th of April respectively.</p>
+<blockquote>
+<p>TODO: Other types of year e.g. academic years.</p>
 </blockquote>
 </div>
 <div id="uk-geographies" class="section level3">
@@ -93,6 +219,42 @@
 <blockquote>
 <p>TODO: Explain how to pivot a wide, multiple measure dataframe into a long, measure-dimension dataframe.</p>
 </blockquote>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># Used to control randomness in the examples</span>
+
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span>
+        year <span class="op">=</span> <span class="fl">2020</span><span class="op">:</span><span class="fl">2021</span>,
+        geography <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"W92000001"</span>, <span class="st">"E92000001"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+        population <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">1000000</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span>,
+        gdp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">1000000</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">df</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 4 × 4</span></span>
+<span class="co">#&gt;    <span style="font-weight: bold;">year</span> <span style="font-weight: bold;">geography</span> <span style="font-weight: bold;">population</span>     <span style="font-weight: bold;">gdp</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;int&gt;</span> <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #555555;">1</span>  <span style="text-decoration: underline;">2</span>020 W92000001     <span style="text-decoration: underline;">993</span>735 1<span style="text-decoration: underline;">003</span>295</span>
+<span class="co">#&gt; <span style="color: #555555;">2</span>  <span style="text-decoration: underline;">2</span>020 E92000001    1<span style="text-decoration: underline;">001</span>836  <span style="text-decoration: underline;">991</span>795</span>
+<span class="co">#&gt; <span style="color: #555555;">3</span>  <span style="text-decoration: underline;">2</span>021 W92000001     <span style="text-decoration: underline;">991</span>644 1<span style="text-decoration: underline;">004</span>874</span>
+<span class="co">#&gt; <span style="color: #555555;">4</span>  <span style="text-decoration: underline;">2</span>021 E92000001    1<span style="text-decoration: underline;">015</span>953 1<span style="text-decoration: underline;">007</span>383</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
+    cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"population"</span>, <span class="st">"gdp"</span><span class="op">)</span>,
+    names_to <span class="op">=</span> <span class="st">"measure_type"</span>
+<span class="op">)</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 8 × 4</span></span>
+<span class="co">#&gt;    <span style="font-weight: bold;">year</span> <span style="font-weight: bold;">geography</span> <span style="font-weight: bold;">measure_type</span>   <span style="font-weight: bold;">value</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;int&gt;</span> <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #555555;">1</span>  <span style="text-decoration: underline;">2</span>020 W92000001 population    <span style="text-decoration: underline;">993</span>735</span>
+<span class="co">#&gt; <span style="color: #555555;">2</span>  <span style="text-decoration: underline;">2</span>020 W92000001 gdp          1<span style="text-decoration: underline;">003</span>295</span>
+<span class="co">#&gt; <span style="color: #555555;">3</span>  <span style="text-decoration: underline;">2</span>020 E92000001 population   1<span style="text-decoration: underline;">001</span>836</span>
+<span class="co">#&gt; <span style="color: #555555;">4</span>  <span style="text-decoration: underline;">2</span>020 E92000001 gdp           <span style="text-decoration: underline;">991</span>795</span>
+<span class="co">#&gt; <span style="color: #555555;">5</span>  <span style="text-decoration: underline;">2</span>021 W92000001 population    <span style="text-decoration: underline;">991</span>644</span>
+<span class="co">#&gt; <span style="color: #555555;">6</span>  <span style="text-decoration: underline;">2</span>021 W92000001 gdp          1<span style="text-decoration: underline;">004</span>874</span>
+<span class="co">#&gt; <span style="color: #555555;"># … with 2 more rows</span></span></code></pre></div>
 </div>
 <div id="hierarchies" class="section level3">
 <h3>
@@ -101,19 +263,139 @@
 <blockquote>
 <p>TODO: What do you do when you have a parent -&gt; child relationship in the dataset. We need to make explicit that columns should be orthogonal from one another.</p>
 </blockquote>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># Used to control randomness in the examples</span>
+
+<span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span>
+        year <span class="op">=</span> <span class="fl">2020</span><span class="op">:</span><span class="fl">2021</span>,
+        local_authority <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+            <span class="st">"W06000015"</span>, <span class="co"># Cardiff</span>
+            <span class="st">"W06000011"</span>  <span class="co"># Swansea</span>
+    <span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"W92000001"</span>, .before <span class="op">=</span> <span class="va">local_authority</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span>
+        year <span class="op">=</span> <span class="fl">2020</span><span class="op">:</span><span class="fl">2021</span>,
+        country <span class="op">=</span> <span class="st">"W92000001"</span>,
+        local_authority <span class="op">=</span> <span class="cn">NA</span>
+    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">df1</span>, <span class="va">df2</span><span class="op">)</span>
+
+<span class="va">df</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 6 × 4</span></span>
+<span class="co">#&gt;    <span style="font-weight: bold;">year</span> <span style="font-weight: bold;">country</span>   <span style="font-weight: bold;">local_authority</span>  <span style="font-weight: bold;">value</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;int&gt;</span> <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #555555;">1</span>  <span style="text-decoration: underline;">2</span>020 W92000001 W06000015       -<span style="color: #BB0000;">0.626</span></span>
+<span class="co">#&gt; <span style="color: #555555;">2</span>  <span style="text-decoration: underline;">2</span>020 W92000001 W06000011        0.184</span>
+<span class="co">#&gt; <span style="color: #555555;">3</span>  <span style="text-decoration: underline;">2</span>021 W92000001 W06000015       -<span style="color: #BB0000;">0.836</span></span>
+<span class="co">#&gt; <span style="color: #555555;">4</span>  <span style="text-decoration: underline;">2</span>021 W92000001 W06000011        1.60 </span>
+<span class="co">#&gt; <span style="color: #555555;">5</span>  <span style="text-decoration: underline;">2</span>020 W92000001 <span style="color: #BB0000;">NA</span>               0.330</span>
+<span class="co">#&gt; <span style="color: #555555;">6</span>  <span style="text-decoration: underline;">2</span>021 W92000001 <span style="color: #BB0000;">NA</span>              -<span style="color: #BB0000;">0.820</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+        geography <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">local_authority</span>, <span class="va">country</span><span class="op">)</span>, 
+        .after <span class="op">=</span> <span class="va">local_authority</span>
+    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">local_authority</span>, <span class="op">-</span><span class="va">country</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 6 × 3</span></span>
+<span class="co">#&gt;    <span style="font-weight: bold;">year</span> <span style="font-weight: bold;">geography</span>  <span style="font-weight: bold;">value</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;int&gt;</span> <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #555555;">1</span>  <span style="text-decoration: underline;">2</span>020 W06000015 -<span style="color: #BB0000;">0.626</span></span>
+<span class="co">#&gt; <span style="color: #555555;">2</span>  <span style="text-decoration: underline;">2</span>020 W06000011  0.184</span>
+<span class="co">#&gt; <span style="color: #555555;">3</span>  <span style="text-decoration: underline;">2</span>021 W06000015 -<span style="color: #BB0000;">0.836</span></span>
+<span class="co">#&gt; <span style="color: #555555;">4</span>  <span style="text-decoration: underline;">2</span>021 W06000011  1.60 </span>
+<span class="co">#&gt; <span style="color: #555555;">5</span>  <span style="text-decoration: underline;">2</span>020 W92000001  0.330</span>
+<span class="co">#&gt; <span style="color: #555555;">6</span>  <span style="text-decoration: underline;">2</span>021 W92000001 -<span style="color: #BB0000;">0.820</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># TODO: Turn this into a proper function.</span>
+<span class="va">hierarchy</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>parent_notation <span class="op">=</span> <span class="va">country</span>, notation <span class="op">=</span> <span class="va">local_authority</span><span class="op">)</span>
+
+<span class="va">notations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">hierarchy</span><span class="op">$</span><span class="va">notation</span>, <span class="va">hierarchy</span><span class="op">$</span><span class="va">parent_notation</span><span class="op">)</span><span class="op">)</span>
+<span class="va">notations</span> <span class="op">&lt;-</span> <span class="va">notations</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">notations</span><span class="op">)</span><span class="op">]</span>
+
+<span class="va">codelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>notation <span class="op">=</span> <span class="va">notations</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">hierarchy</span>, by <span class="op">=</span> <span class="st">"notation"</span><span class="op">)</span>
+
+<span class="va">codelist</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 5 × 2</span></span>
+<span class="co">#&gt;   <span style="font-weight: bold;">notation</span>  <span style="font-weight: bold;">parent_notation</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>          </span>
+<span class="co">#&gt; <span style="color: #555555;">1</span> W06000015 W92000001      </span>
+<span class="co">#&gt; <span style="color: #555555;">2</span> W06000015 W92000001      </span>
+<span class="co">#&gt; <span style="color: #555555;">3</span> W06000011 W92000001      </span>
+<span class="co">#&gt; <span style="color: #555555;">4</span> W06000011 W92000001      </span>
+<span class="co">#&gt; <span style="color: #555555;">5</span> W92000001 <span style="color: #BB0000;">NA</span></span></code></pre></div>
 </div>
 <div id="statistical-markers" class="section level3">
 <h3>
-<span class="header-section-number">2.1.5</span> Statistical Markers<a class="anchor" aria-label="anchor" href="#statistical-markers"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.5</span> Statistical markers<a class="anchor" aria-label="anchor" href="#statistical-markers"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>TODO: How to deal with missing values, or marks which indicate non-disclosure etc.</p>
 </blockquote>
+<p>The UK Government Statistical Service provides advice on <a href="https://gss.civilservice.gov.uk/policy-store/symbols-in-tables-definitions-and-help/">using symbols and shorthand in statistical tables</a>. Previously, this involved using symbols such as <code>:</code>, <code>*</code> or <code>†</code> to describe things like an observation being suppressed due to non disclosure or statistical significance. New <a href="https://github.com/best-practice-and-impact/using-symbols-in-tables-draft-update/blob/main/draft-one.md">draft guidance</a> no longer recommends the use of these specific symbols, but instead recommends using letters such a <code>[c]</code> or <code>[x]</code>. We refer to these as <strong>markers</strong>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># Used to control randomness in the examples</span>
+
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2020</span><span class="op">:</span><span class="fl">2021</span>,
+                  geography <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"W92000001"</span>, <span class="st">"E92000001"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">value</span>, <span class="st">"[c]"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">df</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 4 × 3</span></span>
+<span class="co">#&gt;    <span style="font-weight: bold;">year</span> <span style="font-weight: bold;">geography</span> <span style="font-weight: bold;">value</span>             </span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;int&gt;</span> <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>             </span>
+<span class="co">#&gt; <span style="color: #555555;">1</span>  <span style="text-decoration: underline;">2</span>020 W92000001 [c]               </span>
+<span class="co">#&gt; <span style="color: #555555;">2</span>  <span style="text-decoration: underline;">2</span>020 E92000001 [c]               </span>
+<span class="co">#&gt; <span style="color: #555555;">3</span>  <span style="text-decoration: underline;">2</span>021 W92000001 -0.835628612410047</span>
+<span class="co">#&gt; <span style="color: #555555;">4</span>  <span style="text-decoration: underline;">2</span>021 E92000001 1.59528080213779</span></code></pre></div>
+<p>We notice R has interpreted the <code>value</code> column as containing characters rather than numbers due to the introduction of the <code>[c]</code> symbol. This causes some unideal behaviour when trying to use the data to compute further statistics.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">value</span><span class="op">)</span>
+<span class="co">#&gt; Warning in mean.default(df$value): argument is not numeric or logical: returning</span>
+<span class="co">#&gt; NA</span>
+<span class="co">#&gt; [1] NA</span></code></pre></div>
+<p>We require that the data be separated into a <code>value</code> column and a <code>marker</code> column, with the <code>marker</code> column including these sorts of symbols. We also require that the <code>marker</code> column be limited to containing <em>one</em> marker only. If there is a need to mark observations with multiple markers, we advice creating multiple columns, one for each marker.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># TODO: Turn this into a proper function.</span>
+<span class="va">extract_markers</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">x</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/warning.html">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+        marker <span class="op">=</span> <span class="fu">extract_markers</span><span class="op">(</span><span class="va">value</span><span class="op">)</span>,
+        value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span><span class="op">)</span>
+    <span class="op">)</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 4 × 4</span></span>
+<span class="co">#&gt;    <span style="font-weight: bold;">year</span> <span style="font-weight: bold;">geography</span>  <span style="font-weight: bold;">value</span> <span style="font-weight: bold;">marker</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;int&gt;</span> <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="co">#&gt; <span style="color: #555555;">1</span>  <span style="text-decoration: underline;">2</span>020 W92000001 <span style="color: #BB0000;">NA</span>     [c]   </span>
+<span class="co">#&gt; <span style="color: #555555;">2</span>  <span style="text-decoration: underline;">2</span>020 E92000001 <span style="color: #BB0000;">NA</span>     [c]   </span>
+<span class="co">#&gt; <span style="color: #555555;">3</span>  <span style="text-decoration: underline;">2</span>021 W92000001 -<span style="color: #BB0000;">0.836</span> <span style="color: #BB0000;">NA</span>    </span>
+<span class="co">#&gt; <span style="color: #555555;">4</span>  <span style="text-decoration: underline;">2</span>021 E92000001  1.60  <span style="color: #BB0000;">NA</span></span></code></pre></div>
 </div>
-<div id="cubes" class="section level3">
-<h3>
-<span class="header-section-number">2.1.6</span> Cubes<a class="anchor" aria-label="anchor" href="#cubes"><i class="fas fa-link"></i></a>
-</h3>
+</div>
+<div id="representing-as-linked-data" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Representing as linked data<a class="anchor" aria-label="anchor" href="#representing-as-linked-data"><i class="fas fa-link"></i></a>
+</h2>
 <blockquote>
 <p>TODO: Explain how to create a cube from a dataframe.</p>
 <ul>
@@ -122,7 +404,7 @@
 <li>Attributes.</li>
 </ul>
 </blockquote>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ld_dataset</span><span class="op">(</span><span class="va">df</span>,
     title <span class="op">=</span> <span class="st">"My Dataset"</span>,
     description <span class="op">=</span> <span class="st">"This is a description of the dataset"</span>,
@@ -132,16 +414,111 @@
         value <span class="op">=</span> <span class="fu">measure</span><span class="op">(</span><span class="op">)</span>
     <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-</div>
-</div>
-<div id="csv-on-the-web-csvw" class="section level2">
-<h2>
-<span class="header-section-number">2.2</span> CSV on the Web (CSVW)<a class="anchor" aria-label="anchor" href="#csv-on-the-web-csvw"><i class="fas fa-link"></i></a>
-</h2>
+<div id="csv-on-the-web-csvw" class="section level3">
+<h3>
+<span class="header-section-number">2.2.1</span> CSV on the Web (CSVW)<a class="anchor" aria-label="anchor" href="#csv-on-the-web-csvw"><i class="fas fa-link"></i></a>
+</h3>
 <blockquote>
 <p>TODO: Explain the CSV on the Web (CSVW) format.</p>
 </blockquote>
+</div>
+</div>
+<div id="examples" class="section level2">
+<h2>
+<span class="header-section-number">2.3</span> Examples<a class="anchor" aria-label="anchor" href="#examples"><i class="fas fa-link"></i></a>
+</h2>
+<div id="quarterly-stamp-duty-land-tax-sdlt-statistics" class="section level3">
+<h3>
+<span class="header-section-number">2.3.1</span> Quarterly Stamp Duty Land Tax (SDLT) statistics<a class="anchor" aria-label="anchor" href="#quarterly-stamp-duty-land-tax-sdlt-statistics"><i class="fas fa-link"></i></a>
+</h3>
+<p>We take an extract of <code>Table_2a</code> of <a href="https://www.gov.uk/government/statistics/quarterly-stamp-duty-land-tax-sdlt-statistics">Quarterly Stamp Duty Land Tax (SDLT) statistics</a>.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># https://www.gov.uk/government/statistics/quarterly-stamp-duty-land-tax-sdlt-statistics</span>
 
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
+  `Financial Year`                                  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2019-20"</span>, <span class="st">"2020-21"</span><span class="op">)</span>,
+  `All liable transactions under £250K`             <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">290200</span>,    <span class="fl">157100</span><span class="op">)</span>,
+  `HRAD transactions under £250K`                   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">135400</span>,    <span class="fl">117600</span><span class="op">)</span>,
+  `All liable transactions between £250K and £500K` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">279600</span>,    <span class="fl">98500</span><span class="op">)</span>,
+  `HRAD transactions between £250K and £500K`       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">56100</span>,     <span class="fl">52800</span><span class="op">)</span>
+<span class="op">)</span>
+
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="8%">
+<col width="21%">
+<col width="17%">
+<col width="28%">
+<col width="24%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Financial Year</th>
+<th align="right">All liable transactions under £250K</th>
+<th align="right">HRAD transactions under £250K</th>
+<th align="right">All liable transactions between £250K and £500K</th>
+<th align="right">HRAD transactions between £250K and £500K</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">2019-20</td>
+<td align="right">290200</td>
+<td align="right">135400</td>
+<td align="right">279600</td>
+<td align="right">56100</td>
+</tr>
+<tr class="even">
+<td align="left">2020-21</td>
+<td align="right">157100</td>
+<td align="right">117600</td>
+<td align="right">98500</td>
+<td align="right">52800</td>
+</tr>
+</tbody>
+</table></div>
+<p>We can see this looks like a cross tabulation of year and transaction details. To make it tidy, the transaction details belong in their own column.</p>
+<p>This example is interesting because under closer inspection we can see the transaction details contain two pieces of information, the type of transaction (e.g. <code>All liable transactions</code> and <code>HRAD transactions</code>), and the price band of those transactions (<code>under £250k</code>, <code>between £250k and £500k</code>).</p>
+<p>Additionally, the sources’ footnotes mention data from 2020-21 are provisional.</p>
+<p>Our approach is:</p>
+<ul>
+<li>Pivot the dataframe into a longer format.</li>
+<li>Split out the column headers into two pieces of information, the transaction type and the transaction price band.</li>
+<li>Explicitly mark provisional data in the data.</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
+
+<span class="va">tidy_df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">!</span><span class="va">`Financial Year`</span>,
+               values_to <span class="op">=</span> <span class="st">"transactions"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># https://www.statworx.com/de/blog/strsplit-but-keeping-the-delimiter/</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span>
+    <span class="va">name</span>,
+    into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"transaction_type"</span>, <span class="st">"transaction_price_band"</span><span class="op">)</span>,
+    sep <span class="op">=</span> <span class="st">"(?=under |between )"</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>financial_year <span class="op">=</span> <span class="va">`Financial Year`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    transaction_type <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">transaction_type</span><span class="op">)</span>,
+    transaction_price_band <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_sentence</a></span><span class="op">(</span><span class="va">transaction_price_band</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>marker <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">financial_year</span> <span class="op">==</span> <span class="st">"2020-21"</span> <span class="op">~</span> <span class="st">"[p]"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">tidy_df</span>
+<span class="co">#&gt; <span style="color: #555555;"># A tibble: 8 × 5</span></span>
+<span class="co">#&gt;   <span style="font-weight: bold;">financial_year</span> <span style="font-weight: bold;">transaction_type</span>      <span style="font-weight: bold;">transaction_price_ba…</span> <span style="font-weight: bold;">transactions</span> <span style="font-weight: bold;">marker</span></span>
+<span class="co">#&gt;   <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #555555; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="co">#&gt; <span style="color: #555555;">1</span> 2019-20        All liable transacti… Under £250k                 <span style="text-decoration: underline;">290</span>200 <span style="color: #BB0000;">NA</span>    </span>
+<span class="co">#&gt; <span style="color: #555555;">2</span> 2019-20        HRAD transactions     Under £250k                 <span style="text-decoration: underline;">135</span>400 <span style="color: #BB0000;">NA</span>    </span>
+<span class="co">#&gt; <span style="color: #555555;">3</span> 2019-20        All liable transacti… Between £250k and £5…       <span style="text-decoration: underline;">279</span>600 <span style="color: #BB0000;">NA</span>    </span>
+<span class="co">#&gt; <span style="color: #555555;">4</span> 2019-20        HRAD transactions     Between £250k and £5…        <span style="text-decoration: underline;">56</span>100 <span style="color: #BB0000;">NA</span>    </span>
+<span class="co">#&gt; <span style="color: #555555;">5</span> 2020-21        All liable transacti… Under £250k                 <span style="text-decoration: underline;">157</span>100 [p]   </span>
+<span class="co">#&gt; <span style="color: #555555;">6</span> 2020-21        HRAD transactions     Under £250k                 <span style="text-decoration: underline;">117</span>600 [p]   </span>
+<span class="co">#&gt; <span style="color: #555555;"># … with 2 more rows</span></span></code></pre></div>
+
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -150,18 +527,22 @@
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#creating-linked-data"><span class="header-section-number">2</span> Creating Linked Data</a></li>
+<li><a class="nav-link" href="#creating-linked-data"><span class="header-section-number">2</span> Creating linked data</a></li>
 <li>
 <a class="nav-link" href="#tidy-data"><span class="header-section-number">2.1</span> Tidy(ish) data</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#dates-and-times"><span class="header-section-number">2.1.1</span> Dates and times</a></li>
 <li><a class="nav-link" href="#uk-geographies"><span class="header-section-number">2.1.2</span> UK geographies</a></li>
 <li><a class="nav-link" href="#multiple-measures"><span class="header-section-number">2.1.3</span> Multiple Measures</a></li>
 <li><a class="nav-link" href="#hierarchies"><span class="header-section-number">2.1.4</span> Hierarchies</a></li>
-<li><a class="nav-link" href="#statistical-markers"><span class="header-section-number">2.1.5</span> Statistical Markers</a></li>
-<li><a class="nav-link" href="#cubes"><span class="header-section-number">2.1.6</span> Cubes</a></li>
+<li><a class="nav-link" href="#statistical-markers"><span class="header-section-number">2.1.5</span> Statistical markers</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#csv-on-the-web-csvw"><span class="header-section-number">2.2</span> CSV on the Web (CSVW)</a></li>
+<li>
+<a class="nav-link" href="#representing-as-linked-data"><span class="header-section-number">2.2</span> Representing as linked data</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#csv-on-the-web-csvw"><span class="header-section-number">2.2.1</span> CSV on the Web (CSVW)</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#examples"><span class="header-section-number">2.3</span> Examples</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#quarterly-stamp-duty-land-tax-sdlt-statistics"><span class="header-section-number">2.3.1</span> Quarterly Stamp Duty Land Tax (SDLT) statistics</a></li></ul>
+</li>
 </ul>
 
       <div class="book-extra">
